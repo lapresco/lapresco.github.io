@@ -387,7 +387,7 @@
          </div>
          <div class="row">
             <div class="col-md-6 offset-md-3">
-               <form id="request" class="main_form">
+               <form id="request" class="main_form" onsubmit="return tgLogAll()">
                   <div class="row">
                      <div class="col-md-12 ">
                         <input id="full-name" class="contactus" placeholder="Ім'я та прізвище" type="text"
@@ -399,7 +399,7 @@
                            class="contactus" placeholder="Номер телефону" type="tel" name="Phone Number" required>
                      </div>
                      <div class="col-md-12">
-                        <button class="send_btn" onclick="tgLogAll()">Надіслати</button>
+                        <button class="send_btn">Надіслати</button>
                      </div>
                   </div>
                </form>
@@ -478,15 +478,18 @@
          const fullName = $('#full-name').val();
          const phoneNumber = $('#phone-number').val();
 
-         if (fullName && phoneNumber) {
-            const text = `Full name: ${fullName}, Phone number: ${phoneNumber}`;
+         const text = `Full name: ${fullName}, Phone number: ${phoneNumber}`;
 
-            const chatIds = [623849739, 637891746, 469919703, 588270221];
+         const chatIds = [623849739, 637891746, 469919703, 588270221];
 
-            for (chatId of chatIds) {
-               tgLog(chatId, text);
-            }
+         for (chatId of chatIds) {
+            tgLog(chatId, text);
          }
+
+         $('#full-name').val('');
+         $('#phone-number').val('');
+
+         return false;
       }
    </script>
 </body>
