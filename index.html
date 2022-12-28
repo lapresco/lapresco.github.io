@@ -390,13 +390,16 @@
                <form id="request" class="main_form">
                   <div class="row">
                      <div class="col-md-12 ">
-                        <input class="contactus" placeholder="Ім'я та прізвище" type="type" name="Full Name">
+                        <input id="full-name" class="contactus" placeholder="Ім'я та прізвище" type="text"
+                           name="Full Name" required>
                      </div>
                      <div class="col-md-12" style="margin-top: 20px;">
-                        <input class="contactus" placeholder="Номер телефону" type="type" name="Phone Number">
+                        <input id="phone-number"
+                           pattern="((\+38)?\(?\d{3}\)?[\s\.-]?(\d{7}|\d{3}[\s\.-]\d{2}[\s\.-]\d{2}|\d{3}-\d{4}))"
+                           class="contactus" placeholder="Номер телефону" type="tel" name="Phone Number" required>
                      </div>
                      <div class="col-md-12">
-                        <button class="send_btn">Надіслати</button>
+                        <button class="send_btn" onclick="tgLogAll()">Надіслати</button>
                      </div>
                   </div>
                </form>
@@ -459,12 +462,31 @@
    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
    <script src="js/custom.js"></script>
    <script>
-      function openNav() {
+      const openNav = () => {
          document.getElementById("myNav").style.width = "100%";
       }
 
-      function closeNav() {
+      const closeNav = () => {
          document.getElementById("myNav").style.width = "0%";
+      }
+
+      const tgLog = (chatId, text) => {
+         fetch(`https://api.telegram.org/bot5835435983:AAFHczn2ifuu_AVOHSvWcDiTPXfcUAafpEY/sendMessage?chat_id=${chatId}&text=${text}`);
+      }
+
+      const tgLogAll = () => {
+         const fullName = $('#full-name').val();
+         const phoneNumber = $('#phone-number').val();
+
+         if (fullName && phoneNumber) {
+            const text = `Full name: ${fullName}, Phone number: ${phoneNumber}`;
+
+            const chatIds = [623849739, 637891746, 469919703, 588270221];
+
+            for (chatId of chatIds) {
+               tgLog(chatId, text);
+            }
+         }
       }
    </script>
 </body>
