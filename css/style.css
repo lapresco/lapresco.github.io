@@ -584,12 +584,12 @@ ul.social_icon li a:hover {
   width: 100%;
 }
 
-.body_blu_img figure {
-  margin: 0;
+.carousel-item img {
+  width: 50%;
 }
 
-.testimo_ban_bg {
-  background: #3e3f40;
+.body_blu_img figure {
+  margin: 0;
 }
 
 .testimo_ban::before {
@@ -608,6 +608,8 @@ ul.social_icon li a:hover {
 }
 
 .relative2 {
+  display: flex;
+  justify-content: center;
   position: inherit;
   text-align: left;
   padding: 0px 70px;
@@ -650,7 +652,7 @@ ul.social_icon li a:hover {
 }
 
 #testimo .carousel-control-next {
-  right: 30px;
+  right: 20px;
 }
 
 .banner .carousel-indicators li {
