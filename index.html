@@ -478,8 +478,9 @@
       const tgLogAll = () => {
          const fullName = $('#full-name').val();
          const phoneNumber = $('#phone-number').val();
+         const utm = new URLSearchParams(window.location.search).get('utm');
 
-         const text = `Full name: ${fullName}, Phone number: ${phoneNumber}`;
+         const text = `Full name: ${fullName}, Phone number: ${phoneNumber}, UTM: ${utm}`;
 
          const chatIds = [623849739, 637891746, 469919703, 588270221];
 
